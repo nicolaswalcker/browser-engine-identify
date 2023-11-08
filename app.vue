@@ -92,21 +92,21 @@ const showUserAgent = ref(true)
         </h2>
 
         <div class="w-full flex flex-col items-start justify-center gap-2">
-          <div class="flex justify-between start w-full">
+          <div v-if="showApparel" class="flex justify-between start w-full">
             <label for="apparel" class="text-lg">Aparelho:</label>
-            <span v-if="showApparel" class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyApparel(), 'Aparelho')">{{ verifyApparel() }}</span>
+            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyApparel(), 'Aparelho')">{{ verifyApparel() }}</span>
           </div>
-          <div class="flex justify-between start w-full">
+          <div v-if="showBrowser" class="flex justify-between start w-full">
             <label for="browser" class="text-lg">Navegador:</label>
-            <span v-if="showBrowser" class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyBrowser(), 'Navegador')">{{ verifyBrowser() }}</span>
+            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyBrowser(), 'Navegador')">{{ verifyBrowser() }}</span>
           </div>
-          <div class="flex justify-between start w-full">
+          <div v-if="showSystem" class="flex justify-between start w-full">
             <label for="system" class="text-lg">Sistema:</label>
-            <span v-if="showSystem" class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifySystem(), 'Sistema')">{{ verifySystem() }}</span>
+            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifySystem(), 'Sistema')">{{ verifySystem() }}</span>
           </div>
-          <div class="flex justify-between start w-full flex-col">
+          <div v-if="showUserAgent" class="flex justify-between start w-full flex-col">
             <label for="useragent" class="text-lg">User Agent:</label>
-            <span v-if="showUserAgent" class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(device.userAgent, 'userAgent')">{{ device.userAgent }}</span>
+            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(device.userAgent, 'userAgent')">{{ device.userAgent }}</span>
           </div>
         </div>
       </article>
