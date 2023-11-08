@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.5",
+    "@nuxtjs/device": "^3.1.1",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
@@ -18,5 +19,8 @@
     "@vueuse/nuxt": "^10.5.0",
     "eslint": "^8.52.0",
     "nuxt": "^3.7.4"
+  },
+  "dependencies": {
+    "@nuxt/ui": "^2.10.0"
   }
 }

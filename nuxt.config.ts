@@ -1,10 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
-    '@vueuse/nuxt'
-
+    '@vueuse/nuxt',
+    '@nuxtjs/device',
+    '@nuxt/ui'
   ],
+  colorMode: {
+    preference: 'dark'
+  },
   devtools: { enabled: true }
 })
