@@ -10,12 +10,24 @@ const device = useDevice()
 const verifyBrowser = () => {
   let browser: string = ''
 
-  if (device.isChrome) { browser = 'Chrome' }
-  if (device.isFirefox) { browser = 'Firefox' }
-  if (device.isSafari) { browser = 'Safari' }
-  if (device.isCrawler) { browser = 'Crawler' }
-  if (device.isEdge) { browser = 'Edge' }
-  if (device.isSamsung) { browser = 'Samsung' }
+  if (device.isChrome) {
+    browser = 'Chrome'
+  }
+  if (device.isFirefox) {
+    browser = 'Firefox'
+  }
+  if (device.isSafari) {
+    browser = 'Safari'
+  }
+  if (device.isCrawler) {
+    browser = 'Crawler'
+  }
+  if (device.isEdge) {
+    browser = 'Edge'
+  }
+  if (device.isSamsung) {
+    browser = 'Samsung'
+  }
 
   return browser
 }
@@ -23,9 +35,15 @@ const verifyBrowser = () => {
 const verifyApparel = () => {
   let apparel: string = ''
 
-  if (device.isMobile) { apparel = 'Mobile' }
-  if (device.isTablet) { apparel = 'Tablet' }
-  if (device.isDesktop) { apparel = 'Desktop' }
+  if (device.isMobile) {
+    apparel = 'Mobile'
+  }
+  if (device.isTablet) {
+    apparel = 'Tablet'
+  }
+  if (device.isDesktop) {
+    apparel = 'Desktop'
+  }
 
   return apparel
 }
@@ -40,13 +58,29 @@ const copyItem = (item: string, label: string) => {
   }
 }
 
-const verifySystem = () => {
+const verifySystem = (): string => {
   let system: string = ''
-
-  if (device.isMacOS) { system = 'MacOS' }
-  if (device.isWindows) { system = 'Windows' }
-  if (device.isAndroid) { system = 'Android' }
-  if (device.isIos) { system = 'IOS' } else { system = 'Desconhecido ou Linux' }
+  if (device.userAgent.includes('Mac')) {
+    system = 'MacOS'
+  }
+  if (device.userAgent.includes('Windows')) {
+    system = 'Windows'
+  }
+  if (device.userAgent.includes('Android')) {
+    system = 'Android'
+  }
+  if (device.userAgent.includes('iPhone')) {
+    system = 'IOS'
+  }
+  if (device.userAgent.includes('iPad')) {
+    system = 'IOS'
+  }
+  if (device.userAgent.includes('iPod')) {
+    system = 'IOS'
+  }
+  if (device.userAgent.includes('Linux')) {
+    system = 'Linux'
+  }
 
   return system
 }
@@ -55,16 +89,21 @@ const showApparel = ref(true)
 const showBrowser = ref(true)
 const showSystem = ref(true)
 const showUserAgent = ref(true)
-
 </script>
 
 <template>
-  <div class="min-h-screen w-full flex items-center justify-center px-4 bg-gray-950 flex-col">
-    <div class="max-w-xl w-full h-full flex flex-col items-start justify-center gap-3">
+  <div
+    class="min-h-screen w-full flex items-center justify-center px-4 bg-gray-950 flex-col"
+  >
+    <div
+      class="max-w-xl w-full h-full flex flex-col items-start justify-center gap-3"
+    >
       <h1 class="text-2xl font-bold">
         Informações do navegador
       </h1>
-      <article class=" h-auto w-full bg-gray-900 rounded-md border border-primary p-3 flex flex-col items-start justify-center gap-3">
+      <article
+        class="h-auto w-full bg-gray-900 rounded-md border border-primary p-3 flex flex-col items-start justify-center gap-3"
+      >
         <h2 class="text-lg font-semibold">
           Controles
         </h2>
@@ -82,7 +121,10 @@ const showUserAgent = ref(true)
             <UToggle id="system" v-model="showSystem" name="system" />
           </div>
           <div class="flex justify-between items-center w-full">
-            <label for="useragent" class="text-lg">Exibir <code>useragent</code></label>
+            <label
+              for="useragent"
+              class="text-lg"
+            >Exibir <code>useragent</code></label>
             <UToggle id="useragent" v-model="showUserAgent" name="useragent" />
           </div>
         </div>
@@ -94,19 +136,34 @@ const showUserAgent = ref(true)
         <div class="w-full flex flex-col items-start justify-center gap-2">
           <div v-if="showApparel" class="flex justify-between start w-full">
             <label for="apparel" class="text-lg">Aparelho:</label>
-            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyApparel(), 'Aparelho')">{{ verifyApparel() }}</span>
+            <span
+              class="text-base text-primary/75 cursor-pointer hover:text-primary"
+              @click="copyItem(verifyApparel(), 'Aparelho')"
+            >{{ verifyApparel() }}</span>
           </div>
           <div v-if="showBrowser" class="flex justify-between start w-full">
             <label for="browser" class="text-lg">Navegador:</label>
-            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifyBrowser(), 'Navegador')">{{ verifyBrowser() }}</span>
+            <span
+              class="text-base text-primary/75 cursor-pointer hover:text-primary"
+              @click="copyItem(verifyBrowser(), 'Navegador')"
+            >{{ verifyBrowser() }}</span>
           </div>
           <div v-if="showSystem" class="flex justify-between start w-full">
             <label for="system" class="text-lg">Sistema:</label>
-            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(verifySystem(), 'Sistema')">{{ verifySystem() }}</span>
+            <span
+              class="text-base text-primary/75 cursor-pointer hover:text-primary"
+              @click="copyItem(verifySystem(), 'Sistema')"
+            >{{ verifySystem() }}</span>
           </div>
-          <div v-if="showUserAgent" class="flex justify-between start w-full flex-col">
+          <div
+            v-if="showUserAgent"
+            class="flex justify-between start w-full flex-col"
+          >
             <label for="useragent" class="text-lg">User Agent:</label>
-            <span class="text-base text-primary/75 cursor-pointer hover:text-primary" @click="copyItem(device.userAgent, 'userAgent')">{{ device.userAgent }}</span>
+            <span
+              class="text-base text-primary/75 cursor-pointer hover:text-primary"
+              @click="copyItem(device.userAgent, 'userAgent')"
+            >{{ device.userAgent }}</span>
           </div>
         </div>
       </article>
